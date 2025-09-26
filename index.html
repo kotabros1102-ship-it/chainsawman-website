@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>アニメ「チェンソーマン」紹介ページ（テンプレート）</title>
+<style>
+ :root{
+   --accent: #ff4b4b;
+   --bg-overlay: rgba(0,0,0,0.45);
+   --card-bg: rgba(255,255,255,0.03);
+   --text: #f3f3f3;
+   --muted: #cfcfcf;
+   /* 背景画像を設定したいときはここを変更してください（例: url("images/bg.jpg")） */
+   --bg-url: none;
+ }
+ .page-bg{
+   position:fixed;
+   inset:0;
+   background-image:var(--bg-url);
+   background-size:cover;
+   background-position:center;
+   filter:brightness(0.65);
+   z-index:-2;
+ }
+ .bg-overlay{
+   position:fixed;
+   inset:0;
+   background:var(--bg-overlay);
+   z-index:-1;
+ }
+ /* レイアウト */
+ .container{
+   width:100%;
+   max-width:1100px;
+   margin:2rem auto;
+   padding:1rem;
+   box-sizing:border-box;
+ }
+ header{
+   display:flex;
+   align-items:center;
+   justify-content:space-between;
+   gap:1rem;
+   margin-bottom:1.25rem;
+ }
+
+ <header class="site-header">
+</header>
+
+ .brand{
+   display:flex;
+   gap:.75rem;
+   align-items:center;
+ }
+ h1{
+   font-size:1.1rem;
+   margin:0;
+   letter-spacing:0.04em;
+ }
+ p.tagline{ margin:0; color:var(--muted); font-size:0.85rem; }
+ /* メニュー（スライドイン） */
+ .side-menu{
+   position:fixed;
+   top:0;
+   left:0;
+   height:100vh;
+   width:320px;
+   max-width:80%;
+   transform:translateX(-110%);
+   transition:transform .35s cubic-bezier(.2,.9,.25,1);
+   background:linear-gradient(180deg, rgba(10,10,12,0.98), rgba(6,6,8,0.98));
+   box-shadow: 8px 0 30px rgba(0,0,0,0.7);
+   padding:2rem 1.25rem;
+   z-index:40;
+   overflow:auto;
+ }
+ .side-menu.open{ transform:translateX(0); }
+ .menu-section{ margin-bottom:1.25rem; }
+ .menu-section h3{ margin:0 0 .5rem 0; font-size:0.95rem; color:var(--muted); }
+ .menu-list{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.5rem; }
+ .menu-list a{
+   color:var(--text);
+   text-decoration:none;
+   padding:.55rem .65rem;
+   border-radius:8px;
+   transition:background .18s;
+   font-weight:600;
+ }
+ .menu-list a:hover{ background:rgba(255,255,255,0.03); }
+ /* メインコンテンツカード */
+ main{
+   display:grid;
+   grid-template-columns: 1fr;
+   gap:1rem;
+ }
+ .grid{
+   display:grid;
+   grid-template-columns: 1fr 1fr;
+   gap:1rem;
+ }
+ .card{
+   background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+   border-radius:12px;
+   padding:1rem;
+   box-shadow:0 6px 24px rgba(0,0,0,0.5);
+   border:1px solid rgba(255,255,255,0.03);
+ }
+ .card h2{ margin:.0 0 .6rem 0; font-size:1rem; }
+ .muted{ color:var(--muted); font-size:0.9rem; }
+ /* キャラクターリスト */
+ .char-list{ display:flex; flex-direction:column; gap:.6rem; }
+ .char{
+   display:flex;
+   gap:.75rem;
+   align-items:flex-start;
+   padding:.6rem;
+   border-radius:10px;
+   background: rgba(0,0,0,0.25);
+ }
+ .char .thumb{
+   width:64px;
+   height:64px;
+   flex:0 0 64px;
+   border-radius:8px;
+   background:linear-gradient(180deg,#222,#111);
+   display:grid;
+   place-items:center;
+   color:var(--muted);
+   font-size:0.7rem;
+ }
+ .char .meta{ flex:1; }
+ .char .meta h4{ margin:0 0 .25rem 0; font-size:.98rem; }
+ .char .meta .cv{ color:var(--muted); font-size:.85rem; margin-bottom:.35rem; display:block; }
+ .char .meta .desc{ color:var(--muted); font-size:.9rem; }
+ /* エピソードリスト */
+ .episode{ padding:.6rem; border-radius:8px; background:rgba(255,255,255,0.02); display:flex; gap:.6rem; align-items:flex-start; }
+ .ep-num{ width:44px; height:44px; border-radius:8px; background:linear-gradient(135deg,var(--accent), #ff8a8a); display:grid; place-items:center; font-weight:700; color:#1b1b1b; }
+ .ep-body h4{ margin:0 0 .25rem 0; }
+ .ep-body .meta{ color:var(--muted); font-size:.92rem; }
+ /* フッター */
+ footer{ margin-top:1.25rem; color:var(--muted); font-size:0.9rem; text-align:center; }
+ /* レスポンシブ */
+ @media (max-width:880px){
+   .grid{ grid-template-columns:1fr; }
+   header{ gap:.5rem; }
+ }
+ @media (max-width:480px){
+   .container{ margin:1rem; }
+   .logo{ width:40px; height:40px; font-size:0.95rem; }
+   .hamburger{ width:32px; height:24px; }
+   .side-menu{ width:84%; }
+ }
+</style>
+<link rel="stylesheet" href="Untitled-1.css">
+</head>
+<body>
+<div class="page-bg" aria-hidden="true"></div>
+<div class="bg-overlay" aria-hidden="true"></div>
+<div class="container">
+<header>
+<div class="brand">
+<div class="logo"><img src="C:\Users\nhs20244\Desktop\Webデザイン\アニメ「チェンソーマン」\images\download.png" alt="アイコン"></div>
+<div>
+<h1>アニメ「チェンソーマン」 </h1>
+<p class="tagline">キャラクター紹介 と ストーリーをハンバーガーメニューで切替できます</p>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:1rem">
+<nav aria-label="メインメニュー">
+<button id="hambtn" class="hamburger" aria-expanded="false" aria-controls="side-menu">
+<span></span><span></span><span></span>
+</button>
+</nav>
+</div>
+</header>
+<!-- スライドインメニュー -->
+<aside id="side-menu" class="side-menu" role="dialog" aria-hidden="true">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+<strong style="font-size:1.05rem">メニュー</strong>
+<button id="closeMenu" aria-label="メニューを閉じる" style="background:none;border:0;color:var(--muted);cursor:pointer">閉じる</button>
+</div>
+<div class="menu-section">
+<h3>セクション</h3>
+<ul class="menu-list">
+<li><a href="#characters">CHARACTER</a></li>
+<li><a href="#story">STORY</a></li>
+</ul>
+</div>
+<div class="menu-section">
+<h3>キャラクター</h3>
+<ul class="menu-list">
+<li><a href="#denji">デンジ</a></li>
+<li><a href="#pochita">ポチタ</a></li>
+<li><a href="#makima">マキマ</a></li>
+<li><a href="#aki">早川アキ</a></li>
+<li><a href="#power">パワー</a></li>
+<li><a href="#hime">姫野</a></li>
+<li><a href="#kobeni">コベニ</a></li>
+<li><a href="#arawaka">荒川ヒロカズ</a></li>
+<li><a href="#kishibe">岸辺</a></li>
+<li><a href="#angel">天使の悪魔</a></li>
+<li><a href="#sharkman">サメの魔人</a></li>
+<li><a href="#violence">暴力の魔人</a></li>
+<li><a href="#spider">蜘蛛の悪魔</a></li>
+<li><a href="#sawatari">沢渡アカネ</a></li>
+<li><a href="#samuraisword">サムライソード</a></li>
+</ul>
+</div>
+<div class="menu-section">
+<h3>エピソード</h3>
+<ul class="menu-list">
+<li><a href="#ep1">第1話</a></li>
+<li><a href="#ep2">第2話</a></li>
+<li><a href="#ep3">第3話</a></li>
+<li><a href="#ep4">第4話</a></li>
+<li><a href="#ep5">第5話</a></li>
+<li><a href="#ep6">第6話</a></li>
+<li><a href="#ep7">第7話</a></li>
+<li><a href="#ep8">第8話</a></li>
+<li><a href="#ep9">第9話</a></li>
+<li><a href="#ep10">第10話</a></li>
+<li><a href="#ep11">第11話</a></li>
+<li><a href="#ep12">第12話</a></li>
+</ul>
+<div class="menu-section">
+<h3>公式サイト</h3>
+</div>
+</aside>
+<main>
+<div class="slider-container">
+<div class="slider" id="slider">
+<img src="C:\Users\nhs20244\Desktop\Webデザイン\アニメ「チェンソーマン」\images\01_3.jpg" alt="画像1">
+<img src="C:\Users\nhs20244\Desktop\Webデザイン\アニメ「チェンソーマン」\images\04_1.jpg" alt="画像2">
+<img src="C:\Users\nhs20244\Desktop\Webデザイン\アニメ「チェンソーマン」\images\04_4.jpg" alt="画像3">
+<img src="C:\Users\nhs20244\Desktop\Webデザイン\アニメ「チェンソーマン」\images\05_1.jpg" alt="画像4">
+<img src="C:\Users\nhs20244\Desktop\Webデザイン\アニメ「チェンソーマン」\images\12_1.jpg" alt="画像5">
+</div>
+</div>
+<script>
+
+const slider = document.getElementById("slider");
+
+const images = document.querySelectorAll("#slider img");
+
+const total = images.length;
+
+let index = 0;
+
+function showNextImage() {
+
+  index++;
+
+  slider.style.transition = "transform 0.5s ease";
+
+  slider.style.transform = `translateX(${-400 * index}px)`; // 画像幅 400px
+
+  if (index === total) {
+
+    // 最後の画像を表示後、最初に戻す
+
+    setTimeout(() => {
+
+      slider.style.transition = "none"; // アニメーションを切る
+
+      slider.style.transform = "translateX(0)";
+
+      index = 0;
+
+    }, 500); // transitionと同じ時間
+
+  }
+
+}
+
+// 3秒ごとにスライド
+
+setInterval(showNextImage, 3000);
+</script>
+ 
+<!-- キャラクター -->
+<section id="characters" class="card" aria-labelledby="chars-title">
+<h2 id="chars-title">キャラクター</h2>
+<div class="char-list" style="margin: top 0.75rem;">
+<!-- デンジ -->
+<article id="denji" class="char" tabindex="0" aria-labelledby="denji-name">
+<div class="character-card">
+    <img src="C:\Users\nhs20244\Desktop\Webデザイン\アニメ「チェンソーマン」\images\chara_1_stand.png" alt="デンジ">
+</div>
+<div class="meta">
+<h4 id="denji-name">デンジ <span style="font-weight:600;color:var(--accent);">（Denji）</span></h4>
+<span class="cv">cv:戸谷菊之介 </span>
+<div class="desc">『チェンソーの悪魔』ポチタと共にデビルハンターとして暮らす。親が遺した借金返済のため、デビルハンターとして働いていた。しかし、裏切りに遭い殺されてしまう。そして、ポチタと契約し、悪魔の心臓を持つもの『チェンソーマン』となる。</div>
+</div>
+</article>
+<!-- ポチタ -->
+<article id="pochita" class="char" tabindex="0" aria-labelledby="pochita-name">
+<div class="character-card">
+    <img src="C:\Users\nhs20244\Desktop\Webデザイン\アニメ「チェンソーマン」\images\chara_5_stand.png">
+</div>
+<div class="meta">
+<h4 id="pochita-name">ポチタ <span style="font-weight:600;color:var(--accent);">（Pochita）</span></h4>
+<span class="cv">cv:井澤詩織 </span>
+<div class="desc">チェンソーの悪魔。デンジと契約をし、デンジの心臓となる。</div>
+</div>
+</article>
+<!-- マキマ -->
+<article id="makima" class="char" tabindex="0" aria-labelledby="makima-name">
+<div class="character-card">
+    <img src="C:\Users\nhs20244\Desktop\Webデザイン\アニメ「チェンソーマン」\images\chara_2_stand.png">
+</div>
+<div class="meta">
+<h4 id="makima-name">マキマ <span style="font-weight:600;color:var(--accent);">（Makima）</span></h4>
+<span class="cv">cv:楠木ともり </span>
+<div class="desc">公安対魔特異4課、内部官房長官直属のデビルハンター。</div>
+</div>
+</article>
+<!-- 早川アキ -->
+<article id="aki" class="char" tabindex="0" aria-labelledby="aki-name">
+<div class="character-card">
+    <img src="C:\Users\nhs20244\Desktop\Webデザイン\アニメ「チェンソーマン」\images\chara_4_stand.png">
+</div>
+<div class="meta">
+<h4 id="aki-name">早川アキ <span style="font-weight:600;color:var(--accent);">（Hayakawa Aki）</span></h4>
+<span class="cv">cv:坂田将吾 </span>
+<div class="desc">公安対魔特異4課。デンジの先輩にあたるデビルハンター。</div>
+</div>
+</article>
+<!-- パワー -->
+<article id="power" class="char" tabindex="0" aria-labelledby="power-name">
+<div class="character-card">
+    <img src="C:\Users\nhs20244\Desktop\Webデザイン\アニメ「チェンソーマン」\images\chara_3_stand.png">
+</div>
+<div class="meta">
+<h4 id="power-name">パワー <span style="font-weight:600;color:var(--accent);">（Power）</span></h4>
+<span class="cv">cv:ファイルーズあい </span>
+<div class="desc">公安対魔特異4課。血の魔人</div>
+</div>
+</article>
+<!-- 姫野 -->
+<article id="hime" class="char" tabindex="0" aria-labelledby="hime-name">
+<div class="character-card">
+    <img src="C:\Users\nhs20244\Desktop\Webデザイン\アニメ「チェンソーマン」\images\chara_6_stand.png">
+</div>
+<div class="meta">
+<h4 id="hime-name">姫野 <span style="font-weight:600;color:var(--accent);">（Himeno）</span></h4>
+<span class="cv">cv:伊瀬茉莉也 </span>
+<div class="desc">公安対魔特異4課。アキのバディ</div>
+</div>
+</article>
+<!-- コベニ -->
+<article id="kobeni" class="char" tabindex="0" aria-labelledby="kobeni-name">
+<div class="character-card">
+    <img src="C:\Users\nhs20244\Desktop\Webデザイン\アニメ「チェンソーマン」\images\chara_7_stand.png">
+</div>
+<div class="meta">
+<h4 id="kobeni-name">コベニ <span style="font-weight:600;color:var(--accent);">（Kobeni）</span></h4>
+<span class="cv">cv:高橋花林 </span>
+<div class="desc">公安対魔特異4課。デンジの同僚で新人の20歳。</div>
+</div>
+</article>
+<!-- 荒川ヒロカズ -->
+<article id="arawaka" class="char" tabindex="0" aria-labelledby="arawaka-name">
+<div class="character-card">
+    <img src="C:\Users\nhs20244\Desktop\Webデザイン\アニメ「チェンソーマン」\images\chara_8_stand.png">
+</div>
+<div class="meta">
+<h4 id="arawaka-name">荒川ヒロカズ <span style="font-weight:600;color:var(--accent);">（Arakawa Hirokazu）</span></h4>
+<span class="cv">cv:八代拓 </span>
+<div class="desc">公安対魔特異4課。デンジの同僚で新人の22歳。</div>
+</div>
+</article>
+<!-- 岸辺 -->
+<article id="kishibe" class="char" tabindex="0" aria-labelledby="kishibe-name">
+<div class="character-card">
+    <img src="C:\Users\nhs20244\Desktop\Webデザイン\アニメ「チェンソーマン」\images\chara_9_stand.png">
+</div>
+<div class="meta">
+<h4 id="kishibe-name">岸辺 <span style="font-weight:600;color:var(--accent);">（Kishibe）</span></h4>
+<span class="cv">cv:津田健次郎 </span>
+<div class="desc">公安対魔特異4課隊長</div>
+</div>
+</article>
+<!-- 天使の悪魔 -->
+<article id="angel" class="char" tabindex="0" aria-labelledby="angel-name">
+<div class="character-card">
+    <img src="C:\Users\nhs20244\Desktop\Webデザイン\アニメ「チェンソーマン」\images\chara_10_stand.png">
+</div>
+<div class="meta">
+<h4 id="angel-name">天使の悪魔 <span style="font-weight:600;color:var(--accent);">（Angel Devil）</span></h4>
+<span class="cv">cv:内田真礼 </span>
+<div class="desc">公安対魔特異4課に所属する悪魔の1体</div>
+</div>
+</article>
+<!-- サメの魔人 -->
+<article id="sharkman" class="char" tabindex="0" aria-labelledby="sharkman-name">
+<div class="character-card">
+    <img src="C:\Users\nhs20244\Desktop\Webデザイン\アニメ「チェンソーマン」\images\chara_11_stand.png">
+</div>
+<div class="meta">
+<h4 id="sharkman-name">サメの魔人 <span style="font-weight:600;color:var(--accent);">（Shark Fiend）</span></h4>
+<span class="cv">cv:花江夏樹 </span>
+<div class="desc">公安対魔特異4課に所属する魔人の1体</div>
+</div>
+</article>
+<!-- 暴力の魔人 -->
+<article id="violence" class="char" tabindex="0" aria-labelledby="violence-name">
+<div class="character-card">
+    <img src="C:\Users\nhs20244\Desktop\Webデザイン\アニメ「チェンソーマン」\images\chara_12_stand.png">
+</div>
+<div class="meta">
+<h4 id="violence-name">暴力の魔人 <span style="font-weight:600;color:var(--accent);">（Violence Fiend）</span></h4>
+<span class="cv">cv:内田夕夜 </span>
+<div class="desc">公安対魔特異4課に所属する魔人の1体</div>
+</div>
+</article>
+<!-- 蜘蛛の悪魔 -->
+<article id="spider" class="char" tabindex="0" aria-labelledby="spider-name">
+<div class="character-card">
+    <img src="C:\Users\nhs20244\Desktop\Webデザイン\アニメ「チェンソーマン」\images\chara_13_stand.png">
+</div>
+<div class="meta">
+<h4 id="spider-name">蜘蛛の悪魔 <span style="font-weight:600;color:var(--accent);">（Spider Devil）</span></h4>
+<span class="cv">cv:後藤佐緒里 </span>
+<div class="desc">公安対魔特異4課に所属する悪魔の1体</div>
+</div>
+</article>
+<!-- 沢渡アカネ -->
+<article id="sawatari" class="char" tabindex="0" aria-labelledby="sawatari-name">
+<div class="character-card">
+    <img src="C:\Users\nhs20244\Desktop\Webデザイン\アニメ「チェンソーマン」\images\chara_14_stand.png">
+</div>
+<div class="meta">
+<h4 id="sawatari-name">沢渡アカネ <span style="font-weight:600;color:var(--accent);">（Sawatori Akane）</span></h4>
+<span class="cv">cv:大地葉 </span>
+<div class="desc">元民間のデビルハンター。ヘビの悪魔と契約している。</div>
+</div>
+</article>
+<!-- サムライソード -->
+<article id="samuraisword" class="char" tabindex="0" aria-labelledby="samuraisword-name">
+<div class="character-card">
+    <img src="C:\Users\nhs20244\Desktop\Webデザイン\アニメ「チェンソーマン」\images\chara_15_stand.png">
+</div>
+<div class="meta">
+<h4 id="samuraisword-name">サムライソード <span style="font-weight:600;color:var(--accent);">（Samurai Sword）</span></h4>
+<span class="cv">cv:濱野大輝 </span>
+<div class="desc">デンジを雇っていたヤクザの孫。</div>
+</div>
+</article>
+</div>
+</section>
+<!-- ストーリー（各話） -->
+<section id="story" class="card" aria-labelledby="story-title">
+<h2 id="story-title">ストーリー</h2>
+<p>悪魔のポチタと共にデビルハンターとして借金取りにこき使われる超貧乏なデンジ。<br>
+   ド底辺の日々は、残忍な裏切りで一変する‼<br>
+   悪魔をその身に宿し、悪魔を借る、新時代ダークヒーローアクション、開幕‼<br>
+   op曲:米津玄師「KICK BACK」
+   <div class="song-card">
+        <a href="https://www.youtube.com/watch?v=M2cckDmNLMI" target="_blank">
+            <img src="https://img.youtube.com/vi/M2cckDmNLMI/hqdefault.jpg" alt="KICK BACK">
+        </a>
+    </div>
+</p>
+<div style="margin-top:0.75rem; display:flex; flex-direction:column; gap:.6rem;">
+<!-- 各話のテンプレ -->
+<article id="ep1" class="episode" aria-labelledby="ep1-title">
+<div class="ep-num">1</div>
+<div class="ep-body">
+<h4 id="ep1-title">01.「犬とチェンソー」</h4>
+<div class="meta">デビルハンターとして暮らす少年デンジ。
+    親が遺した借金返済のため、『チェンソーの悪魔』ポチタと共にヤクザから受けた依頼をこなしながら貧乏な生活を送っていた。<br><br>
+    ある日、ヤクザに呼び出されたデンジは裏切りに遭い、殺されてしまう。<br>
+    薄れる意識の中、デンジに語り掛けるものが居た。<br>
+    ed曲:Vaundy「CHAINSAW BLOOD」<br>
+<div class="song-card">
+        <a href="https://www.youtube.com/watch?v=xIeYK9w03i4" target="_blank">
+            <img src="https://img.youtube.com/vi/xIeYK9w03i4/hqdefault.jpg" alt="CHAINSAW BLOOD">
+        </a>
+    </div></div>
+</div>
+</article>
+<article id="ep2" class="episode" aria-labelledby="ep2-title">
+<div class="ep-num">2</div>
+<div class="ep-body">
+<h4 id="ep2-title">02.「東京到着」</h4>
+<div class="meta">デビルハンター東京本部に連れてこられたデンジは、
+    マキマから先輩の早川アキを紹介され、二人で任務に就くことに。
+    しかしデンジは早川に殴られた上、「仕事を辞めろ」と言われてしまい――。<br>
+    ed曲:ずっと真夜中でいいのに「残機」<br>
+<div class="song-card">
+        <a href="https://www.youtube.com/watch?v=Hw1fy7VF_w8" target="_blank">
+            <img src="https://img.youtube.com/vi/Hw1fy7VF_w8/hqdefault.jpg" alt="残機">
+        </a>
+    </div></div>
+</div>
+</article>
+<article id="ep3" class="episode" aria-labelledby="ep3-title">
+<div class="ep-num">3</div>
+<div class="ep-body">
+<h4 id="ep3-title">03.「ニャーコの行方」</h4>
+<div class="meta">バディを組んだ『血の魔人』パワーは、かつて飼っていた猫のニャーコを悪魔から取り返す交換条件として、
+    胸を揉んでよいと言う。<br>
+    夢が叶いそうな状況を目の前に、俄然気合いが入るデンジだったが――。<br>
+    ed曲:マキシマム ザ ホルモン「刃渡り2億センチ」<br>
+    <div class="song-card">
+        <a href="https://www.youtube.com/watch?v=HEwAiwttN10" target="_blank">
+            <img src="https://img.youtube.com/vi/HEwAiwttN10/hqdefault.jpg" alt="刃渡り2億センチ">
+        </a>
+    </div></div>
+</div>
+</article>
+<article id="ep4" class="episode" aria-labelledby="ep4-title">
+<div class="ep-num">4</div>
+<div class="ep-body">
+<h4 id="ep4-title">04.「救出」</h4>
+<div class="meta">激闘の末に『コウモリの悪魔』を倒し、パワーを救い出したデンジ。
+    その目的はあくまで“胸を揉むこと”だった。<br>
+    「バカみたいな理由じゃな」と呆れるパワーだが、胸を揉ませてくれると言う。
+    それに快哉を上げるデンジだったが――。
+<br>ed曲:TOOBOE「錠剤」<br>
+<div class="song-card">
+        <a href="https://www.youtube.com/watch?v=xIKW3NKYBWw" target="_blank">
+            <img src="https://img.youtube.com/vi/xIKW3NKYBWw/hqdefault.jpg" alt="錠剤">
+        </a>
+    </div></div>
+</div>
+</article>
+<article id="ep5" class="episode" aria-labelledby="ep5-title">
+<div class="ep-num">5</div>
+<div class="ep-body">
+<h4 id="ep5-title">05.「銃の悪魔」</h4>
+<div class="meta">早川アキ、パワーとの３人で共同生活を始めるデンジ。<br>
+    念願叶ってパワーの胸を揉むことに成功するが――。<br>
+    ed曲:syudou「インザバックルーム」<br>
+<div class="song-card">
+        <a href="https://www.youtube.com/watch?v=ymQ3wEIq84Y" target="_blank">
+            <img src="https://img.youtube.com/vi/ymQ3wEIq84Y/hqdefault.jpg" alt="インザバックルーム">
+        </a>
+    </div></div>
+</div>
+</article>
+<article id="ep6" class="episode" aria-labelledby="ep6-title">
+<div class="ep-num">6</div>
+<div class="ep-body">
+<h4 id="ep6-title">06:「デンジを殺せ」</h4>
+<div class="meta">銃の悪魔の肉片を集めるためにホテルに潜入したデンジたち公安対魔特異4課。<br>
+    しかし、悪魔の能力によって8階に閉じ込められてしまい窮地に立たされる――。<br>
+    ed曲:Kanaria「大脳的なランデブー」<br>
+<div class="song-card">
+        <a href="https://www.youtube.com/watch?v=ZcdMcoKNtwc" target="_blank">
+            <img src="https://img.youtube.com/vi/ZcdMcoKNtwc/hqdefault.jpg" alt="大脳的なランデブー">
+        </a>
+    </div></div>
+</div>
+</article>
+<article id="ep7" class="episode" aria-labelledby="ep7-title">
+<div class="ep-num">7</div>
+<div class="ep-body">
+<h4 id="ep7-title">07:「キスの味」</h4>
+<div class="meta">デンジを庇ってコベニに刺されたアキ。<br>
+    その姿を見てデンジは『永遠の悪魔』に向かって飛び込んでいく。<br>
+    その姿を見つめる姫野はある言葉を思い出し――。<br>
+    ed曲:ano「ちゅ、多様性」<br>
+<div class="song-card">
+        <a href="https://www.youtube.com/watch?v=msZ5b2usBNc" target="_blank">
+            <img src="https://img.youtube.com/vi/msZ5b2usBNc/hqdefault.jpg" alt="ちゅ、多様性">
+        </a>
+    </div></div>
+</div>
+</article>
+<article id="ep8" class="episode" aria-labelledby="ep8-title">
+<div class="ep-num">8</div>
+<div class="ep-body">
+<h4 id="ep8-title">08:「銃声」</h4>
+<div class="meta">衝撃的なファーストキスを経験したデンジ。<br>
+    酔いつぶれた勢いそのままに姫野の自宅にかつぎこまれ、誘惑されるも――。
+    <br>ed曲:TK from 凛として時雨「first death」<br>
+<div class="song-card">
+        <a href="https://www.youtube.com/watch?v=6ej4gHhUzek" target="_blank">
+            <img src="https://img.youtube.com/vi/6ej4gHhUzek/hqdefault.jpg" alt="first death">
+        </a>
+    </div></div>
+</div>
+</article>
+<article id="ep9" class="episode" aria-labelledby="ep9-title">
+<div class="ep-num">9</div>
+<div class="ep-body">
+<h4 id="ep9-title">09:「京都より」</h4>
+<div class="meta">デンジとサムライソードの激闘が繰り広げられる。<br>
+    デンジはサムライソードの仲間を人質に取るもサムライソードは仲間ごとデンジをぶった斬り――。
+    <br>ed曲:Aimer「Deep down」<br>
+<div class="song-card">
+        <a href="https://www.youtube.com/watch?v=giJKMtRnD20" target="_blank">
+            <img src="https://img.youtube.com/vi/giJKMtRnD20/hqdefault.jpg" alt="Deep down">
+        </a>
+    </div></div>
+</div>
+</article>
+<article id="ep10" class="episode" aria-labelledby="ep10-title">
+<div class="ep-num">10</div>
+<div class="ep-body">
+<h4 id="ep10-title">10.「もっとボロボロ」</h4>
+<div class="meta">一連の襲撃によって数多くの人員を失った公安対魔特異４課。<br>
+    病院のベッドで目覚めた早川アキは現実を受け入れられない。<br>
+    同じ頃、マキマは４課を強化するためにデンジとパワーの指導役としてとある人物を紹介する。
+    <br>ed曲:PEOPLE1「DOGLAND」<br>
+<div class="song-card">
+        <a href="https://www.youtube.com/watch?v=Uy-_5Cnehns" target="_blank">
+            <img src="https://img.youtube.com/vi/Uy-_5Cnehns/hqdefault.jpg" alt="DOGLAND">
+        </a>
+    </div></div>
+</div>
+</article>
+<article id="ep11" class="episode" aria-labelledby="ep11-title">
+<div class="ep-num">11</div>
+<div class="ep-body">
+<h4 id="ep11-title">11.「作戦開始」</h4>
+<div class="meta">岸辺に鍛えられたデンジとパワー。<br>
+    サムライソードのアジトを突き止め、公安による反撃が開始される。
+    <br>ed曲:女王蜂「バイオレンス」<br>
+<div class="song-card">
+        <a href="https://www.youtube.com/watch?v=UTwujrP2pFo" target="_blank">
+            <img src="https://img.youtube.com/vi/UTwujrP2pFo/hqdefault.jpg" alt="バイオレンス">
+        </a>
+    </div></div>
+</div>
+</article>
+<article id="ep12" class="episode" aria-labelledby="ep12-title">
+<div class="ep-num">12</div>
+<div class="ep-body">
+<h4 id="ep12-title">12.「日本刀VSチェンソー」</h4>
+<div class="meta">ゴーストを操る沢渡に苦戦し、殺されかける早川。<br>
+    同じ頃、再びサムライソードと対峙するデンジは胸のスターターロープを引っ張り、チェンソーマンとなる。<br>
+    そうしてチェンソーマンとサムライソードの最後の戦いが始まり――。
+    <br>ed曲:Eve「ファイトソング」<br>
+    <div class="song-card">
+        <a href="https://www.youtube.com/watch?v=7jM0fUAR2xg" target="_blank">
+            <img src="https://img.youtube.com/vi/7jM0fUAR2xg/hqdefault.jpg" alt="ファイトソング">
+        </a>
+    </div>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- キャラクター -->
+<section id="Official site" class="card" aria-labelledby="chars-title">
+<h2 id="chars-title">公式サイト</h2>
+<div class="char-list" style="margin: top 0.75rem;">
+<a href="https://chainsawman.dog/tvseries/" targeta="_blank">アニメ『チェンソーマン』公式サイト</a>
+</div>
+</main>
+</div>
+<script>
+ // ハンバーガー & サイドメニュー制御
+ const hambtn = document.getElementById('hambtn');
+ const side = document.getElementById('side-menu');
+ const closeBtn = document.getElementById('closeMenu');
+ function openMenu(){
+   hambtn.classList.add('open');
+   hambtn.setAttribute('aria-expanded','true');
+   side.classList.add('open');
+   side.setAttribute('aria-hidden','false');
+ }
+ function closeMenu(){
+   hambtn.classList.remove('open');
+   hambtn.setAttribute('aria-expanded','false');
+   side.classList.remove('open');
+   side.setAttribute('aria-hidden','true');
+ }
+ hambtn.addEventListener('click', ()=> {
+   if(side.classList.contains('open')) closeMenu();
+   else openMenu();
+ });
+ closeBtn.addEventListener('click', closeMenu);
+ // メニュー内リンクをクリックしたらメニューを閉じてセクションに移動
+ document.querySelectorAll('.menu-list a').forEach(a=>{
+   a.addEventListener('click', (e)=>{
+     closeMenu();
+     // スムーススクロール（ブラウザ対応）
+     const href = a.getAttribute('href');
+     if(href && href.startsWith('#')){
+       const target = document.querySelector(href);
+       if(target){
+         setTimeout(()=> target.scrollIntoView({behavior:'smooth', block:'start'}), 150);
+       }
+     }
+   });
+ });
+ // キーボードで閉じる（Esc）
+ document.addEventListener('keydown', (e)=> {
+   if(e.key === 'Escape') closeMenu();
+ });
+</script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+/*アイコン*/
+.logo{
+   width:48px;
+   height:48px;
+   border-radius:8px;
+   background:linear-gradient(135deg,#7b2020,#111);
+   display:grid;
+   place-items:center;
+   font-weight:700;
+   color:var(--accent);
+   box-shadow:0 4px 18px rgba(0,0,0,0.6);
+ }
+ /* 全体背景（背景画像を使う場合は --bg-url を変更） */
+.site-header {
+ width: 100%;                         /* 横幅いっぱい */
+ height: 500px;                        /* 高さ */
+ background-image: url("C:\Users\nhs20244\Desktop\Webデザイン\アニメ「チェンソーマン」\images\20200412_210537.jpg");  /* 画像のパス */
+ background-size: cover;               /* 枠いっぱいに拡大 */
+ background-position: center;          /* 中央に配置 */
+ background-repeat: no-repeat;         /* 繰り返さない */
+}
+
+ body{
+   margin:0;
+   font-family: "Hiragino Kaku Gothic Pro", "Noto Sans JP", system-ui, -apple-system, sans-serif;
+   background-color:#0b0b0d;
+   color:var(--text);
+   min-height:100vh;
+   display:flex;
+   align-items:stretch;
+ }
+ /* ハンバーガー */
+ .hamburger {
+ width: 30px;                 /* ボタンの幅 */
+ height: 25px;                /* ボタンの高さ */
+ display: flex;               /* 縦に3本線を並べる */
+ flex-direction: column;
+ justify-content: space-between; /* 上下の間隔を均等に */
+ cursor: pointer;
+}
+.hamburger span {
+ display: block;
+ height: 4px;                 /* 線の太さ */
+ width: 100%;                 /* 線の長さ */
+ background-color: #333;      /* 線の色 */
+ border-radius: 2px;          /* 線の角を丸く */
+ transform-origin: center;          /*回転の中心*/
+}
+.hamburger.active span:nth-child(1) {
+ transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+ opacity: 0; /* 真ん中の線を消す */
+}
+.hamburger.active span:nth-child(3) {
+ transform: rotate(-45deg) translate(5px, -5px);
+}
+/*画像スライド*/
+.slider-container {
+
+  width: 400px;              /* スライダーの表示幅 */
+
+  overflow: hidden;          /* はみ出した部分を非表示 */
+
+  border: 2px solid #333;
+
+  margin: auto;
+
+}
+
+.slider {
+
+  display: flex;             /* 横並びにする */
+
+  transition: transform 0.5s ease; /* スライドのアニメーション */
+
+}
+
+.slider img {
+
+  width: 400px;              /* 画像の幅 */
+
+  height: 250px;             /* 画像の高さ */
+
+  object-fit: cover;         /* 画像の比率を崩さずトリミング */
+
+}
+ 
+/* キャラクターカード全体 */
+.character-card {
+ width: 200px;         /* カードの横幅 */
+ height: 200px;        /* カードの縦幅 */
+ border: 2px solid #000000;
+ border-radius: 8px;
+ overflow: hidden;     /* 枠からはみ出す部分を隠す */
+ text-align: center;
+ margin: 10px;
+ display: inline-block;
+ vertical-align: top;
+ background-color: #000000; /* 背景色。あとで画像に変えられる */
+}
+/* カード内の画像 */
+.character-card img {
+ width: 100%;           /* カードより少し小さく表示 */
+ height: auto;
+ object-fit: cover;    /* 枠いっぱいに収める */
+ display: block;
+ margin: 5px auto;     /* 中央寄せ */
+}
+.song-card {
+
+  width: 200px;
+
+  border: 2px solid #000000;
+
+  border-radius: 8px;
+
+  overflow: hidden;
+
+  text-align: center;
+
+  margin: 10px;
+
+  display: inline-block;
+
+  cursor: pointer;
+
+  background-color: #000000;
+
+  transition: transform 0.2s;
+
+}
+
+.song-card img {
+
+  width: 100%;
+
+  display: block;
+
+}
+
+.song-card p {
+
+  margin: 5px 0;
+
+  font-size: 14px;
+
+  color: #333;
+
+}
+
+/* ホバーで少し拡大 */
+
+.song-card:hover {
+
+  transform: scale(1.05);
+
+}
+ 
